@@ -68,9 +68,9 @@ def seed_activities(session):
             max_participants=data.get("max_participants", 0),
         )
         session.add(act)
-        session.commit()
         # add participants
         for email in data.get("participants", []):
             p = Participant(email=email, activity_id=act.id)
             session.add(p)
-        session.commit()
+
+    session.commit()
